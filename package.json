@@ -25,7 +25,8 @@
   ],
   "scripts": {
     "build": "rimraf dist/ && tsc && tsc -p tsconfig.cjs.json",
-    "test": "playwright test -c playwright-ct.config.ts"
+    "test": "playwright test -c playwright-ct.config.ts",
+    "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "@playwright/test": "1.x",
