@@ -24,7 +24,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "rimraf dist/ && tsc",
+    "build": "rimraf dist/ && tsc && tsc -p tsconfig.cjs.json",
     "test": "playwright test -c playwright-ct.config.ts"
   },
   "peerDependencies": {

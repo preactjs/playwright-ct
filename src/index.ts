@@ -8,7 +8,7 @@ import {
 } from "@playwright/test";
 // @ts-ignore
 import { fixtures } from "@playwright/test/lib/mount";
-import * as path from "path";
+import path from "path";
 // @ts-ignore
 import type { InlineConfig } from "vite";
 

@@ -6,6 +6,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "dist/",
     "skipLibCheck": true,
     "declaration": true
