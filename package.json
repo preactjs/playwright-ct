@@ -2,7 +2,7 @@
   "name": "@preact/playwright-ct",
   "version": "0.0.2",
   "description": "Playwright Component Testing for Preact",
-  "repository": "github:preact/playwright-ct",
+  "repository": "github:preactjs/playwright-ct",
   "keywords": [
     "Preact",
     "Playwright",
