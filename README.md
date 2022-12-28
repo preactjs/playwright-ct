@@ -15,7 +15,7 @@ npm install -D @preact/playwright-ct
 After installing we need to alter our config
 
 ```ts
-import "@preact/playwright-ct";
+import { PlaywrightTestConfig } from "@preact/playwright-ct";
 
 const config: PlaywrightTestConfig = {
   // Your config
