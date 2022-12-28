@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.19.6
-  '@playwright/test': ^1.27.1
+  '@playwright/test': ^1.29.1
   '@preact/preset-vite': ^2.4.0
   '@types/node': ^18.11.7
   husky: ^8.0.1
@@ -19,7 +19,7 @@ dependencies:
   vite: 3.2.0
 
 devDependencies:
-  '@playwright/test': 1.27.1
+  '@playwright/test': 1.29.1
   '@types/node': 18.11.7
   husky: 8.0.1
   lint-staged: 13.0.3
@@ -333,13 +333,13 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@playwright/test/1.27.1:
-    resolution: {integrity: sha512-mrL2q0an/7tVqniQQF6RBL2saskjljXzqNcCOVMUjRIgE6Y38nCNaP+Dc2FBW06bcpD3tqIws/HT9qiMHbNU0A==}
+  /@playwright/test/1.29.1:
+    resolution: {integrity: sha512-iQxk2DX5U9wOGV3+/Jh9OHPsw5H3mleUL2S4BgQuwtlAfK3PnKvn38m4Rg9zIViGHVW24opSm99HQm/UFLEy6w==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 18.11.7
-      playwright-core: 1.27.1
+      playwright-core: 1.29.1
     dev: true
 
   /@preact/preset-vite/2.4.0_iz76vbq33g7bz4s5lcsczxdoue:
@@ -1160,8 +1160,8 @@ packages:
     hasBin: true
     dev: true
 
-  /playwright-core/1.27.1:
-    resolution: {integrity: sha512-9EmeXDncC2Pmp/z+teoVYlvmPWUC6ejSSYZUln7YaP89Z6lpAaiaAnqroUt/BoLo8tn7WYShcfaCh+xofZa44Q==}
+  /playwright-core/1.29.1:
+    resolution: {integrity: sha512-20Ai3d+lMkWpI9YZYlxk8gxatfgax5STW8GaMozAHwigLiyiKQrdkt7gaoT9UQR8FIVDg6qVXs9IoZUQrDjIIg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

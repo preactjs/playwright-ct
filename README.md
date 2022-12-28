@@ -12,7 +12,19 @@ npm init playwright@latest -- --ct
 npm install -D @preact/playwright-ct
 ```
 
-When everything is installed you can start adding your first test:
+After installing we need to alter our config
+
+```ts
+import { PlaywrightTestConfig } from "@preact/playwright-ct";
+
+const config: PlaywrightTestConfig = {
+  // Your config
+};
+
+export default config;
+```
+
+Now you can start adding your first test:
 
 ```jsx
 // App.jsx
