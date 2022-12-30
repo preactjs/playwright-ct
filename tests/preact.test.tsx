@@ -4,6 +4,8 @@ import { DefaultChildren } from './components/DefaultChildren';
 import { MultiRoot } from './components/MultiRoot';
 import { Counter } from './components/Counter';
 import { EmptyFragment } from './components/EmptyFragment';
+import { Theme } from './components/theme';
+import type { HooksConfig } from '../playwright';
 
 test('render props', async ({ mount }) => {
   const component = await mount(<Button title="Submit" />);
@@ -62,24 +64,24 @@ test('execute callback when the button is clicked', async ({ mount }) => {
 test('render a default child', async ({ mount }) => {
   const component = await mount(<DefaultChildren>
     Main Content
-  </DefaultChildren>)
-  await expect(component).toContainText('Main Content')
+  </DefaultChildren>);
+  await expect(component).toContainText('Main Content');
 });
 
 test('render a component as slot', async ({ mount }) => {
   const component = await mount(<DefaultChildren>
     <Button title="Submit" />
-  </DefaultChildren>)
-  await expect(component).toContainText('Submit')
+  </DefaultChildren>);
+  await expect(component).toContainText('Submit');
 });
 
 test('render multiple children', async ({ mount }) => {
   const component = await mount(<DefaultChildren>
     <div id="one">One</div>
     <div id="two">Two</div>
-  </DefaultChildren>)
-  await expect(component.locator('#one')).toContainText('One')
-  await expect(component.locator('#two')).toContainText('Two')
+  </DefaultChildren>);
+  await expect(component.locator('#one')).toContainText('One');
+  await expect(component.locator('#two')).toContainText('Two');
 });
 
 test('execute callback when a child node is clicked', async ({ mount }) => {
@@ -92,8 +94,8 @@ test('execute callback when a child node is clicked', async ({ mount }) => {
 });
 
 test('unmount', async ({ page, mount }) => {
-  const component = await mount(<Button title="Submit" />)
-  await expect(page.locator('#root')).toContainText('Submit')
+  const component = await mount(<Button title="Submit" />);
+  await expect(page.locator('#root')).toContainText('Submit');
   await component.unmount();
   await expect(page.locator('#root')).not.toContainText('Submit');
 });
@@ -112,4 +114,13 @@ test('get textContent of the empty fragment', async ({ mount }) => {
   expect(await component.allTextContents()).toEqual(['']);
   expect(await component.textContent()).toBe('');
   await expect(component).toHaveText('');
+});
+
+test('hooks configuration', async ({ mount }) => {
+  const component = await mount<HooksConfig>(<Theme />, {
+    hooksConfig: {
+      theme: 'dark'
+    }
+  });
+  await expect(component).toHaveText('dark');
 });
