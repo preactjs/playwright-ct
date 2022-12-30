@@ -1,4 +1,4 @@
-import { ComponentType, h, render, VNode } from "preact";
+import { ComponentType, h, JSX, render, VNode } from "preact";
 
 type JsxComponent = {
   kind: "jsx";
@@ -22,20 +22,17 @@ type ObjectComponent = {
 
 type PwVNode = JsxComponent | ObjectComponent;
 
-type HookConfig = any;
-type Mounter = (config: HookConfig) => Promise<void>;
-
 declare global {
   interface Window {
-    playwrightMount(
+    playwrightMount<HooksConfig = any>(
       vnode: PwVNode,
       scratch: HTMLElement,
-      config: HookConfig
+      config: HooksConfig
     ): Promise<void>;
     playwrightUnmount(scratch: HTMLElement): Promise<void>;
     playwrightUpdate(scratch: HTMLElement, vnode: PwVNode): Promise<void>;
-    __pw_hooks_before_mount: Mounter[];
-    __pw_hooks_after_mount: Mounter[];
+    __pw_hooks_before_mount: (<HooksConfig = any>(params: { hooksConfig: HooksConfig; App: () => any }) => Promise<void | JSX.Element>)[];
+    __pw_hooks_after_mount: (<HooksConfig = any>(params: { hooksConfig: HooksConfig; }) => Promise<void>)[];
   }
 }
 
@@ -58,11 +55,15 @@ function normalizeNode(node: PwVNode | string): string | VNode {
 }
 
 window.playwrightMount = async (vnode, scratch, hooksConfig) => {
+  let App = () => normalizeNode(vnode);
   for (const hook of window.__pw_hooks_before_mount || []) {
-    await hook({ hooksConfig });
+    const wrapper = await hook({ App, hooksConfig });
+    if (wrapper) {
+      App = () => wrapper;
+    }
   }
 
-  render(normalizeNode(vnode), scratch);
+  render(App(), scratch);
 
   for (const hook of window.__pw_hooks_after_mount || []) {
     await hook({ hooksConfig });

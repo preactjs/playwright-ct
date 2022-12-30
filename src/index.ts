@@ -5,12 +5,15 @@ import {
   // @ts-ignore
   _addRunnerPlugin,
   PlaywrightTestConfig as BasePlaywrightTestConfig,
+  Locator,
 } from "@playwright/test";
 // @ts-ignore
 import { fixtures } from "@playwright/test/lib/mount";
 import path from "path";
+import { JSX } from 'preact/jsx-runtime';
 // @ts-ignore
 import type { InlineConfig } from "vite";
+import { JsonObject } from './jsonObject';
 
 export type PlaywrightTestConfig = Omit<BasePlaywrightTestConfig, "use"> & {
   use?: BasePlaywrightTestConfig["use"] & {
@@ -30,6 +33,22 @@ _addRunnerPlugin(() => {
   });
 });
 
-const test = baseTest.extend(fixtures);
+export interface MountOptions<HooksConfig extends JsonObject> {
+  hooksConfig?: HooksConfig;
+}
+
+interface MountResult extends Locator {
+  unmount(): Promise<void>;
+  update(component: JSX.Element): Promise<void>;
+}
+
+interface ComponentFixtures {
+  mount<HooksConfig extends JsonObject>(
+    component: JSX.Element,
+    options?: MountOptions<HooksConfig>
+  ): Promise<MountResult>;
+}
+
+const test = baseTest.extend<ComponentFixtures>(fixtures);
 
 export { test, expect, devices };
