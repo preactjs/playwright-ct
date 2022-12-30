@@ -13,6 +13,7 @@ import path from "path";
 import { JSX } from 'preact/jsx-runtime';
 // @ts-ignore
 import type { InlineConfig } from "vite";
+import { JsonObject } from './jsonObject';
 
 export type PlaywrightTestConfig = Omit<BasePlaywrightTestConfig, "use"> & {
   use?: BasePlaywrightTestConfig["use"] & {
@@ -31,11 +32,6 @@ _addRunnerPlugin(() => {
     return require("@preact/preset-vite").default({});
   });
 });
-
-type JsonPrimitive = string | number | boolean | null;
-type JsonValue = JsonPrimitive | JsonObject | JsonArray;
-type JsonArray = JsonValue[];
-type JsonObject = { [Key in string]?: JsonValue };
 
 export interface MountOptions<HooksConfig extends JsonObject> {
   hooksConfig?: HooksConfig;
