@@ -50,7 +50,7 @@ test('update slots without remounting', async ({ mount }) => {
   await expect(component).toContainText('Test Slot');
 
   await expect(component.locator('#remount-count')).toContainText('1');
-;})
+});
 
 test('execute callback when the button is clicked', async ({ mount }) => {
   const messages: string[] = [];
@@ -82,6 +82,21 @@ test('render multiple children', async ({ mount }) => {
   </DefaultChildren>);
   await expect(component.locator('#one')).toContainText('One');
   await expect(component.locator('#two')).toContainText('Two');
+});
+
+test('render string as child', async ({ mount }) => {
+  const component = await mount(<DefaultChildren>{'string'}</DefaultChildren>);
+  await expect(component).toContainText('string');
+});
+
+test('render array as child', async ({ mount }) => {
+  const component = await mount(<DefaultChildren>{[4,2]}</DefaultChildren>);
+  await expect(component).toContainText('42');
+});
+
+test('render number as child', async ({ mount }) => {
+  const component = await mount(<DefaultChildren>{1337}</DefaultChildren>);
+  await expect(component).toContainText('1337');
 });
 
 test('execute callback when a child node is clicked', async ({ mount }) => {

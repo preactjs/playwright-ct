@@ -1,4 +1,4 @@
-import { ComponentType, h, JSX, render, VNode } from "preact";
+import { ComponentType, h, JSX, render, VNode, ComponentChild } from "preact";
 
 type JsxComponent = {
   kind: "jsx";
@@ -19,8 +19,9 @@ type ObjectComponent = {
   type: string;
   options?: MountOptions;
 };
+type PwChild = Function | string | number | PwChild[];
 
-type PwVNode = JsxComponent | ObjectComponent;
+type PwVNode = JsxComponent | ObjectComponent | PwChild;
 
 declare global {
   interface Window {
@@ -44,13 +45,13 @@ export function register(components: Record<string, ComponentType>) {
   }
 }
 
-function normalizeNode(node: PwVNode | string): string | VNode {
-  if (typeof node === "string") return node;
+function normalizeNode(node: PwVNode): ComponentChild | VNode {
+  if (typeof node !== 'object' || Array.isArray(node)) return node;
   if (node.kind !== "jsx") {
     throw new Error("Expected jsx node");
   }
 
-  const fn = registry.get(node.type as any)!;
+  const fn = registry.get(node.type)!;
   return h(fn || node.type, node.props, ...node.children.map(normalizeNode));
 }
 
