@@ -1,6 +1,6 @@
-import { devices, PlaywrightTestConfig } from "./src/index";
+import { devices, defineConfig } from "./src/index";
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   timeout: 10000,
   use: {
     ctPort: 3100,
@@ -13,6 +13,4 @@ const config: PlaywrightTestConfig = {
       },
     },
   ],
-};
-
-export default config;
+});

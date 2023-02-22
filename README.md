@@ -15,13 +15,11 @@ npm install -D @preact/playwright-ct
 After installing we need to alter our config
 
 ```ts
-import { PlaywrightTestConfig } from "@preact/playwright-ct";
+import { defineConfig } from "@preact/playwright-ct";
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   // Your config
-};
-
-export default config;
+});
 ```
 
 Now you can start adding your first test:
