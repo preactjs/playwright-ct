@@ -30,11 +30,11 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@playwright/test": ">=1.28.0",
+    "@playwright/test": ">=1.31.0",
     "preact": "10.x"
   },
   "devDependencies": {
-    "@playwright/test": "^1.29.1",
+    "@playwright/test": "^1.31.0",
     "@types/node": "^18.11.7",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",

@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': ^7.19.6
-  '@playwright/test': ^1.29.1
+  '@playwright/test': ^1.31.0
   '@preact/preset-vite': ^2.4.0
   '@types/node': ^18.11.7
   husky: ^8.0.1
@@ -19,7 +19,7 @@ dependencies:
   vite: 3.2.0
 
 devDependencies:
-  '@playwright/test': 1.29.1
+  '@playwright/test': 1.31.0
   '@types/node': 18.11.7
   husky: 8.0.1
   lint-staged: 13.0.3
@@ -333,13 +333,15 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
-  /@playwright/test/1.29.1:
-    resolution: {integrity: sha512-iQxk2DX5U9wOGV3+/Jh9OHPsw5H3mleUL2S4BgQuwtlAfK3PnKvn38m4Rg9zIViGHVW24opSm99HQm/UFLEy6w==}
+  /@playwright/test/1.31.0:
+    resolution: {integrity: sha512-Ys5s/06Dg9g3zAIdCIb/UOBYim3U7Zjb3DvC6XBtnRmnglH5O47iwYzmtxXu9fhSyzI2Jn28apkXIOD81GgCdw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       '@types/node': 18.11.7
-      playwright-core: 1.29.1
+      playwright-core: 1.31.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /@preact/preset-vite/2.4.0_iz76vbq33g7bz4s5lcsczxdoue:
@@ -864,7 +866,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /function-bind/1.1.1:
@@ -1160,8 +1161,8 @@ packages:
     hasBin: true
     dev: true
 
-  /playwright-core/1.29.1:
-    resolution: {integrity: sha512-20Ai3d+lMkWpI9YZYlxk8gxatfgax5STW8GaMozAHwigLiyiKQrdkt7gaoT9UQR8FIVDg6qVXs9IoZUQrDjIIg==}
+  /playwright-core/1.31.0:
+    resolution: {integrity: sha512-/KquBjS5DcASCh8cGeNVHuC0kyb7c9plKTwaKxgOGtxT7+DZO2fjmFvPDBSXslEIK5CeOO/2kk5rOCktFXKEdA==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
